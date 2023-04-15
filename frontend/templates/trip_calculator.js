@@ -2,14 +2,32 @@ const apiKey = 'VmO1MFS235Hqbtt8vREynA';
 const apiUrl = 'https://www.carboninterface.com/api/v1/';
 
 // Function to request data from the carbon api
-function carbonRequest(api_dir) {
+function carbonRequest(api_dir, vehicleID="") {
     // define constants
     const url = `${apiUrl}${api_dir}`;
-    const options = {
-        headers: {
-            Authorization: `Bearer ${apiKey}`
-        }
-    };
+    let options = {};
+    if (vehicleID == "") {
+        options = {
+            headers: {
+                Authorization: `Bearer ${apiKey}`
+            },
+        };
+    }
+    else {
+        options = {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${apiKey}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                type: "vehicle",
+                distance_unit: "mi",
+                distance_value: 100,
+                vehicle_model_id: vehicleID
+            })
+        };
+    }
     // use a promise to allow the api request to run
     return new Promise((resolve, reject) => {
         fetch(url, options)
@@ -162,7 +180,7 @@ function populateYears(yearMap) {
 }
 
 function runCarbonEstimate(vehicleID) {
-    carbonRequest(`estimates/${vehicleID}`)
+    carbonRequest('estimates', vehicleID)
         .then(data => {
             console.log(data)
         })
