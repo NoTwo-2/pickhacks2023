@@ -1,4 +1,4 @@
-var map, originMarker, destMarker;
+var map, originMarker, destMarker,originAutocomplete, destAutocomplete;;
 
 function initMap() {
   // Create a map centered on the United States
@@ -6,6 +6,11 @@ function initMap() {
     center: {lat: 39.8283, lng: -98.5795},
     zoom: 4
   });
+
+originAutocomplete = new google.maps.places.Autocomplete(
+    document.getElementById('origin'), {types: ['geocode']});
+  destAutocomplete = new google.maps.places.Autocomplete(
+    document.getElementById('destination'), {types: ['geocode']});
 }
 
 function calculateDistance() {
@@ -22,7 +27,10 @@ function calculateDistance() {
   }, function(response, status) {
     if (status === 'OK') {
       var distance = response.rows[0].elements[0].distance.text;
-      alert('Distance between origin and destination: ' + distance);
+      console.log(distance);
+      var consoleDiv = document.getElementById("distance");
+      consoleDiv.innerHTML += distance;
+
     } else {
       alert('Error: ' + status);
     }
