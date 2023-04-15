@@ -4,9 +4,23 @@
     <title>Trip Calculator</title>
   </head>
   <body>
-    <label for="make">Select a vehicle make:</label>
-    <input type="text" id="search" placeholder="Search...">
-    <select id="dropdown"></select>
+    <div>
+      <label for="make_list">Search for vehicle make:</label>
+      <input type="text" id="make_search" list="make_list" placeholder="Ex: Hyundai" disabled="True"></input>
+      <datalist id="make_list"></datalist>
+    </div>
+
+    <div>
+      <label for="model_list">Search for vehicle model:</label>
+      <input type="text" id="model_search" list="model_list" placeholder="Ex: Elantra" disabled="True"></input>
+      <datalist id="model_list"></datalist>
+    </div>
+
+    <div>
+      <label for="year_list">Enter a vehicle year:</label>
+      <input type="text" id="year_search" list="year_list" placeholder="Ex: 2011" disabled="True"></input>
+      <datalist id="year_list"></datalist>
+    </div>
 
     <script src="trip_calculator.js"></script>
   </body>
