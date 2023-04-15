@@ -45,8 +45,14 @@ function populateList(listID, searchID, data) {
     });
 }
 
-function activateModels(modelID) {
-    console.log(modelID)
+function activateModels(makeID) {
+    carbonRequest(`vehicle_makes/${makeID}/vehicle_models`)
+        .then(data => {
+            populateList("model_list", "model_search", data)
+        })
+        .catch(error => {
+            console.error('Model request failed', error)
+        })
 }
 
 carbonRequest("vehicle_makes")
@@ -54,5 +60,5 @@ carbonRequest("vehicle_makes")
         populateList("make_list", "make_search", data)
     })
     .catch(error => {
-        console.error('Request failed', error);
+        console.error('Make request failed', error);
     })
