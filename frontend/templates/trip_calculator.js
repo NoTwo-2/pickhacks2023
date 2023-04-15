@@ -58,7 +58,7 @@ function populateMakes(data) {
             activateModels(listItems.get(searchTerm));
         }
         else {
-            deactivateModels();
+            deactivateSearchBox("model_list", "model_search");
         }
     });
 }
@@ -97,9 +97,9 @@ function populateModels(data) {
             // add the year and id pair
             modelDict.get(modelName.toLowerCase()).set(modelYear, modelID)
         }
-
-        search.disabled = false
     });
+
+    search.disabled = false
     console.log(modelDict)
 
     // listen for if the user changes the inputs
@@ -114,7 +114,7 @@ function populateModels(data) {
             populateYears(modelDict.get(searchTerm));
         }
         else {
-            depopulateYears();
+            deactivateSearchBox("year_list", "year_search");
         }
     });
 }
@@ -122,9 +122,40 @@ function populateModels(data) {
 // unlike the other populate functions, this one takes in a map directly
 // without having to parse through json data
 function populateYears(yearMap) {
+    // define html elements
+    const list = document.getElementById("year_list");
+    const search = document.getElementById("year_search");
 
+    // for each element in the json data we are given
+    yearMap.forEach(function years(value, key, map) {
+        // create a new option to put in the datalist "make_list"
+        const option = document.createElement('option')
+        option.value = key;
+        // add the option to the datalist "make_list"
+        list.appendChild(option);
+    });
+
+    // enable the input box
+    search.disabled = false
+
+    // listen for if the user changes the inputs
+    search.addEventListener('input', () => {
+        // get what the user inputted
+        const searchTerm = search.value;
+        
+        // check if what the user inputted is a valid item
+        if (modelDict.has(searchTerm)) {
+            // populate years
+            populateYears(modelDict.get(searchTerm));
+        }
+        else {
+            deactivateSearchBox("year_list", "year_search");
+        }
+    });
 }
 
+// this function will use the carbon request function to make an api request
+// and send the data to the populate models function
 function activateModels(makeID) {
     carbonRequest(`vehicle_makes/${makeID}/vehicle_models`)
         .then(data => {
@@ -135,21 +166,14 @@ function activateModels(makeID) {
         })
 }
 
-function deactivateModels() {
-    const list = document.getElementById("model_list");
-    const search = document.getElementById("model_search");
+function deactivateSearchBox(list, search) {
+    const dlist = document.getElementById(list);
+    const dsearch = document.getElementById(search);
 
-    list.innerHTML = '';
-    search.disabled = true
+    dlist.innerHTML = '';
+    dsearch.disabled = true
+    dsearch.value = ''
 }
-
-// function depopulateYears() {
-//     const list = document.getElementById("model_list");
-//     const search = document.getElementById("model_search");
-
-//     list.innerHTML = '';
-//     search.disabled = true
-// }
 
 carbonRequest("vehicle_makes")
     .then(data => {
