@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Distance Calculator</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
+    <script src="test.js"></script>
+  </head>
+  <body onload="initMap()">
+    <div id="map" style="height: 500px"></div>
+    <div>
+      <label for="origin">Origin:</label>
+      <input type="text" id="origin" placeholder="Enter origin address">
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" placeholder="Enter destination address">
+      <button onclick="calculateDistance()">Calculate distance</button>
+    </div>
+  </body>
+</html>
