@@ -4,13 +4,19 @@
     <title>Trip Calculator</title>
   </head>
   <body>
-    <label for="make_list">Search for vehicle make:</label>
-    <input type="text" id="make_search" list="make_list" placeholder="Ex: Honda"></input>
-    <datalist id="make_list"></datalist>
+    <div>
+      <label for="make_list">Search for vehicle make:</label>
+      <input type="text" id="make_search" list="make_list" placeholder="Ex: Honda" disabled="True"></input>
+      <datalist id="make_list"></datalist>
+    </div>
 
-    <label for="model_list">Search for vehicle model:</label>
-    <input type="text" id="model_search" list="model_list" placeholder="Ex: Elantra"></input>
-    <datalist id="model_list"></datalist>
+    <div>
+      <label for="model_list">Search for vehicle model:</label>
+      <input type="text" id="model_search" list="model_list" placeholder="Ex: Elantra" disabled="True"></input>
+      <datalist id="model_list"></datalist>
+    </div>
+
+    
 
     <script src="trip_calculator.js"></script>
   </body>
