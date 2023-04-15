@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Carbon Interface API Example</title>
+    <meta charset="utf-8">
+    <title>Distance Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function calculateDistance() {
+        var origin = $('#origin').val();
+        var destination = $('#destination').val();
+        
+        // Use Nominatim API to geocode the input addresses
+        $.getJSON('https://nominatim.openstreetmap.org/search', {
+          q: origin,
+          format: 'json',
+          limit: 1
+        }).done(function(response1) {
+          if (response1.length > 0) {
+            var originLat = response1[0].lat;
+            var originLng = response1[0].lon;
+            
+            $.getJSON('https://nominatim.openstreetmap.org/search', {
+              q: destination,
+              format: 'json',
+              limit: 1
+            }).done(function(response2) {
+              if (response2.length > 0) {
+                var destLat = response2[0].lat;
+                var destLng = response2[0].lon;
+                
+                // Use the Haversine formula to calculate the distance between the two locations
+                var R = 6371; // Earth's radius in kilometers
+                var dLat = deg2rad(destLat - originLat);
+                var dLon = deg2rad(destLng - originLng);
+                var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                        Math.cos(deg2rad(originLat)) * Math.cos(deg2rad(destLat)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                var distance = R * c; // Distance in kilometers
+                
+                $('#result').text('Distance between ' + origin + ' and ' + destination + ': ' + distance.toFixed(2) + ' km');
+              } else {
+                $('#result').text('Error: Unable to geocode destination address.');
+              }
+            }).fail(function() {
+              $('#result').text('Error: Unable to connect to Nominatim API.');
+            });
+          } else {
+            $('#result').text('Error: Unable to geocode origin address.');
+          }
+        }).fail(function() {
+          $('#result').text('Error: Unable to connect to Nominatim API.');
+        });
+      }
+      
+      function deg2rad(deg) {
+        return deg * (Math.PI/180);
+      }
+    </script>
   </head>
   <body>
-    <button id="elec_cal">Get Florida Emissions</button>
-    <div id="florida_result"></div>
-    <script src="script.js">
-    </script>
+    <label for="origin">Origin:</label>
+    <input type="text" id="origin" name="origin" placeholder="Enter origin address"><br><br>
+    
+    <label for="destination">Destination:</label>
+    <input type="text" id="destination" name="destination" placeholder="Enter destination address"><br><br>
+    
+    <button onclick="calculateDistance()">Calculate Distance</button><br><br>
+    
+    <div id="result"></div>
   </body>
 </html>

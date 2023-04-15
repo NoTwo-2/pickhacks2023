@@ -1,0 +1,16 @@
+.test_page{
+    background-color: antiquewhite;
+}
+
+
+
+.map_head{
+    text-align: center;
+    font-size: 30pt;
+    font-family: 'Space Grotesk', sans-serif;
+    color: darkgreen;
+}
+.map{
+    margin: 0 auto; /* set left and right margins to "auto" */
+    display: block; 
+}
