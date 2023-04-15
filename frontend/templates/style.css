@@ -1,16 +1,33 @@
-.test_page{
+.test_page {
     background-color: antiquewhite;
-}
-
-
-
-.map_head{
+  }
+  
+  .map_head {
     text-align: center;
-    font-size: 30pt;
+    font-size: 35pt;
     font-family: 'Space Grotesk', sans-serif;
     color: darkgreen;
-}
-.map{
-    margin: 0 auto; /* set left and right margins to "auto" */
-    display: block; 
+  }
+  
+  .map {
+    width: 80%;
+    margin: 0 auto;
+    height: 500px;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .map_desc{
+    font-size:16pt ;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+ .location_search{
+    text-align: center;
+    font-size: 18pt;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #6A5D3E;
+
 }

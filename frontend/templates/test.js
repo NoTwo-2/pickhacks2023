@@ -36,7 +36,6 @@ function calculateDistance() {
       console.log(distance);
       var consoleDiv = document.getElementById("distance");
       consoleDiv.innerHTML += distance;
-
       // Create orgin and Destination markers for search term
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'address': origin }, function(results, status) {

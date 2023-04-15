@@ -5,23 +5,18 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
-    <title>Distance Calculator</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Quicksand&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <title>Distance Calculator</title>
+  </head>
+  <body class="test_page" onload="initMap()">
     <div class="map_head">
       <h1>Plan your next trip better</h1>
     </div>
-
-    <p>
-
-    </p>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
-    <script src="test.js"></script>
-  </head>
-  <body  class='test_page'onload="initMap()">
-    <div id="map" style="height: 500px; width: 700px;"></div>
-    <div>
+    <div class="map_desc">
+      <p>See how much your trip affects the environment! </p>
+    </div>
+    <div class="location_search">
       <label for="origin">Origin:</label>
       <input type="text" id="origin" placeholder="Enter origin address">
       <label for="destination">Destination:</label>
@@ -29,7 +24,11 @@
       <div id="autocomplete"></div>
       <button onclick="calculateDistance()">Calculate distance</button>
       <div id="distance"></div>
-
     </div>
+
+    <div id="map" class="map"></div>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
+    <script src="test.js"></script>
   </body>
 </html>
