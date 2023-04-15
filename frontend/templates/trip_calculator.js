@@ -83,7 +83,7 @@ function populateModels(data) {
             // create a new year to id dictionary
             let yearToID = new Map();
             // add the year and id info to the dictionary
-            yearToID.set(modelYear, modelID)
+            yearToID.set(modelYear, [modelID])
             // add the name and dictionary to the model dictionary
             modelDict.set(modelName.toLowerCase(), yearToID)
 
@@ -95,7 +95,10 @@ function populateModels(data) {
         // if the model is in the dictionary, but the year is not...
         else if (!modelDict.get(modelName.toLowerCase()).has(modelYear)) {
             // add the year and id pair
-            modelDict.get(modelName.toLowerCase()).set(modelYear, modelID)
+            modelDict.get(modelName.toLowerCase()).set(modelYear, [modelID])
+        }
+        else {
+            modelDict.get(modelName.toLowerCase()).get(modelYear).push(modelID)
         }
     });
 
@@ -147,8 +150,10 @@ function populateYears(yearMap) {
         // check if what the user inputted is a valid item
         if (yearMap.has(searchTerm)) {
             console.log(searchTerm)
-            // run the carbon estimate
-            runCarbonEstimate(yearMap.get(searchTerm))
+            // run the carbon estimate for each id
+            yearMap.get(searchTerm).forEach(function estimate(item) {
+                runCarbonEstimate(item)
+            })
         }
         // else {
         //     deactivateSearchBox("year_list", "year_search");
