@@ -135,23 +135,35 @@ function populateYears(yearMap) {
         list.appendChild(option);
     });
 
+    console.log(yearMap)
+
     // enable the input box
     search.disabled = false
 
     // listen for if the user changes the inputs
     search.addEventListener('input', () => {
         // get what the user inputted
-        const searchTerm = search.value;
-        
+        const searchTerm = parseInt(search.value);
         // check if what the user inputted is a valid item
-        if (modelDict.has(searchTerm)) {
-            // populate years
-            populateYears(modelDict.get(searchTerm));
+        if (yearMap.has(searchTerm)) {
+            console.log(searchTerm)
+            // run the carbon estimate
+            runCarbonEstimate(yearMap.get(searchTerm))
         }
-        else {
-            deactivateSearchBox("year_list", "year_search");
-        }
+        // else {
+        //     deactivateSearchBox("year_list", "year_search");
+        // }
     });
+}
+
+function runCarbonEstimate(vehicleID) {
+    carbonRequest(`estimates/${vehicleID}`)
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.error('Estimate request failed', error)
+        })
 }
 
 // this function will use the carbon request function to make an api request
