@@ -7,21 +7,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Quicksand&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito+Sans&display=swap" rel="stylesheet">
     <title>Distance Calculator</title>
   </head>
   <body class="test_page" onload="initMap()">
     <header>
-      <img src="images/logo.png"class="map-logo">
+      <div class="logo-container">
+          <img src="images/logo.png" class="project-logo">
+          <span class="logo-text">e-Mission</span>
+      </div>
       <div class="nav_bar">
-      <nav>
-          <ul>
-              <li><a class="active" href="test.html">Plan your trip</a></li>
-              <li><a href="home.html">Home</a></li>
-              <li><a href="#contact">FAQ</a></li>
-              <li><a href="#about">About</a></li>
-          </ul>
-      </nav>
-  </div>
+          <nav>
+              <ul>
+                  <li><a class="active" href="test.html">Plan your trip </a></li>
+                  <li><a href="home.html">Home</a></li>
+                  <li><a href="#contact">FAQ</a></li>
+                  <li><a href="#about">About</a></li>
+              </ul>
+          </nav>
+      </div>
   </header>
 
 
@@ -80,20 +84,20 @@
     
     <script src="test.js"></script>
 
-    <div class="container">
-      <div class="box" id="box1">
+    <div class="box-container">
+      <div class="green-box" id="box1">
         <div class="title">Car Name 1</div>
         <div><span class="bold">CO2: </span><span class="data" id="box1-co2"></span></div>
       </div>
-      <div class="box" id="box2">
+      <div class="green-box" id="box2">
         <div class="title">Car Name 2</div>
         <div><span class="bold">CO2: </span><span class="data" id="box2-co2"></span></div>
       </div>
-      <div class="box" id="box3">
+      <div class="green-box" id="box3">
         <div class="title">Car Name 3</div>
         <div><span class="bold">CO2: </span><span class="data" id="box3-co2"></span></div>
       </div>
-      <div class="box" id="box4">
+      <div class="green-box" id="box4">
         <div class="title">Car Name 4</div>
         <div><span class="bold">CO2: </span><span class="data" id="box4-co2"></span></div>
       </div>
