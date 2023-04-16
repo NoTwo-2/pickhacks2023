@@ -2,12 +2,7 @@ let map, dRenderer, originAutocomplete, destAutocomplete;;
 let globalDistance
 
 // TODO: SECRET HERE, DESTROY!!!
-var apiKey
-fetch('./config.json')
-  .then(response => response.json())
-  .then(data => {
-    apiKey = data.carbonKey
-  })
+const apiKey = "VmO1MFS235Hqbtt8vREynA"
 const apiUrl = 'https://www.carboninterface.com/api/v1/';
 
 async function initMap() {
