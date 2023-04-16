@@ -17,7 +17,7 @@
   .nav_bar {
     background-color: black;
   }
-  
+
   img {
     height: 40px;
     margin-right: 20px;
@@ -50,7 +50,32 @@
   .active {
     background-color: #04AA6D;
   }
-  
+
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto;
+    max-width: 1200px;
+ }
+
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: #c4ffc4;
+    border-radius: 10px;
+    border-width: 4px;
+    border-color: darkgreen;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+ }
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 10px;
+ }
 
   .map {
     width: 80%;
@@ -66,11 +91,11 @@
     font-family: 'Poppins', sans-serif;
   }
 
+
  .location_search{
     text-align: center;
     font-size: 18pt;
     font-family: 'Quicksand', sans-serif;
     font-family: 'Space Grotesk', sans-serif;
     color: #6A5D3E;
-
 }
