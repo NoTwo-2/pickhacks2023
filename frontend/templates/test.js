@@ -293,9 +293,37 @@ function activateYears(yearToIDMap) {
 
 // this sends an api request for a carbon estimate
 function runCarbonEstimate(vehicleID) {
+  const badID = "f322bdd2-b120-484f-8609-4a3846e6ca12";
+  const okayID = "9a7f2c35-f65e-4569-a897-1d5fd92beaa3";
+  const goodID = "fbb36834-899e-4d90-b1f1-b067918e6ed7";
+
   carbonRequest('estimates', vehicleID, globalDistance)
     .then(data => {
-      showCarInfo(data)
+      showCarBox(data, "usr_box", "usr_car_make", "usr_car_model", "usr_car_year", "usr_co2")
+    })
+    .catch(error => {
+      console.error('Estimate request failed', error)
+    })
+
+  carbonRequest('estimates', badID, globalDistance)
+    .then(data => {
+      showCarBox(data, "bad_box", "bad_make", "bad_model", "bad_year", "bad_co2")
+    })
+    .catch(error => {
+      console.error('Estimate request failed', error)
+    })
+
+  carbonRequest('estimates', okayID, globalDistance)
+    .then(data => {
+      showCarBox(data, "okay_box", "okay_make", "okay_model", "okay_year", "okay_co2")
+    })
+    .catch(error => {
+      console.error('Estimate request failed', error)
+    })
+  
+  carbonRequest('estimates', goodID, globalDistance)
+    .then(data => {
+      showCarBox(data, "good_box", "good_make", "good_model", "good_year", "good_co2")
     })
     .catch(error => {
       console.error('Estimate request failed', error)
@@ -319,6 +347,22 @@ function showCarInfo(data) {
 
   // show the box
   usrCarBox.style.display = "block"
+}
+
+function showCarBox(data, boxID, makeID, modelID, yearID, carbonID) {
+  const carBox = document.getElementById(boxID)
+  const carMake = document.getElementById(makeID)
+  const carModel = document.getElementById(modelID)
+  const carYear = document.getElementById(yearID)
+  const carCarbon = document.getElementById(carbonID)
+
+  carMake.innerHTML = data.data.attributes.vehicle_make
+  carModel.innerHTML = data.data.attributes.vehicle_model
+  carYear.innerHTML = data.data.attributes.vehicle_year
+  carCarbon.innerHTML = data.data.attributes.carbon_lb
+
+  // show the box
+  carBox.style.display = "block"
 }
 
 function disableDiv(divName) {
