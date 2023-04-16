@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Quicksand&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito+Sans&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+          background-color: antiquewhite;
+        }
+        #container {
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+        }
+        h1 {
+          font-size: 36px;
+          margin-top: 50px;
+          margin-bottom: 20px;
+          font-family: 'Space Grotesk', sans-serif;
+          color: darkgreen;
+        }
+        
+        p {
+          font-size: 18px;
+          margin-bottom: 50px;
+          transition: all 0.3s ease;
+          font-family: 'Poppins', sans-serif;
+        }
+        p:hover {
+          color: darkgreen;
+          transform: scale(1.1);
+        }
+        img {
+    border-radius: 20px;
+    border: 5px solid white;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    transition-property: border, opacity;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+img:hover {
+    border: 5px solid black;
+    opacity: 1;
+}
+      </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.png" class="project-logo">
+                <span class="logo-text">e-Mission</span>
+            </div>
+            <div class="nav_bar">
+                <nav>
+                    <ul>
+                        <li><a class="active" href="about.html">About</a></li>
+                        <li><a href="faq.html">FAQ </a></li>
+                        <li><a href="test.html">Plan Your day </a></li>
+                        <li><a href="home.html">Home</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+      <div id="container">
+        <h1>About the Team</h1>
+        <img src="images/aboutus.JPG" width="600px" height="500px">
+        <p>This was all of ours first Hackathon. We learned a lot about the web-development process. It was so helpful having different levels of coding experience coming together and helping each other out when we needed it for this project. We all look forward to the next Hackathon and hopefully improving our web development skills the next time!! </p>
+    </body>
+  </html>
