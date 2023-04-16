@@ -24,11 +24,39 @@
       <div id="autocomplete"></div>
       <button onclick="calculateDistance()">Calculate distance</button>
       <div id="distance"></div>
+
+      <div id="make" style="display: none;">
+        <label for="make_list">Search for vehicle make:</label>
+        <input type="text" id="make_search" list="make_list" placeholder="Ex: Hyundai"></input>
+        <datalist id="make_list"></datalist>
+      </div>
+  
+      <div id="model" style="display: none;">
+        <label for="model_list">Search for vehicle model:</label>
+        <input type="text" id="model_search" list="model_list" placeholder="Ex: Elantra"></input>
+        <datalist id="model_list"></datalist>
+      </div>
+  
+      <div id="year" style="display: none;">
+        <label for="year_list">Enter a vehicle year:</label>
+        <input type="text" id="year_search" list="year_list" placeholder="Ex: 2011"></input>
+        <datalist id="year_list"></datalist>
+      </div>
+      
     </div>
 
     <div id="map" class="map"></div>
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script> 
+    TODO: SECRET HERE, DESTROY IT-->
+    <script>
+      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
+        // Add other bootstrap parameters as needed, using camel case.
+        // Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
+      });
+    </script>
+    
     <script src="test.js"></script>
   </body>
 </html>
