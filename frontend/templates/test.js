@@ -98,7 +98,7 @@ function calculateDistance() {
       alert('Error: ' + status);
     }
 
-  // this
+  // this will get the route google uses to get the distance data
   dService.route({
     origin: origin,
     destination: destination,
@@ -106,13 +106,16 @@ function calculateDistance() {
   }, function(result, status) {
     if (status == 'OK') {
       console.log(dRenderer)
+      // remove the old renderer
       if (dRenderer) {
         dRenderer.setMap(null)
         dRenderer = null
         console.log(dRenderer)
       }
+      // create a new renderer
       dRenderer = new google.maps.DirectionsRenderer();
       dRenderer.setMap(map)
+      // display the polyline representing the direction
       dRenderer.setDirections(result);
     } else {
       alert('Error: ' + status);
@@ -284,7 +287,8 @@ function activateYears(yearToIDMap) {
   });
 }
 
-// this sends an api request for a carbon estimate
+// this sends an api request for the carbon estimates for the user car
+// as well as other benchmark cars
 function runCarbonEstimate(vehicleID) {
   const badID = "f322bdd2-b120-484f-8609-4a3846e6ca12";
   const okayID = "9a7f2c35-f65e-4569-a897-1d5fd92beaa3";
@@ -322,26 +326,8 @@ function runCarbonEstimate(vehicleID) {
       console.error('Estimate request failed', error)
     })
 
+  // automatically scroll down when done generating
   document.getElementById("distance_l").scrollIntoView(true)
-}
-
-// takes a json block of data and populates the html with the elements
-function showCarInfo(data) {
-  console.log(data)
-  // define html elements
-  const usrCarBox = document.getElementById("usr_box")
-  const usrCarMake = document.getElementById("usr_car_make")
-  const usrCarModel = document.getElementById("usr_car_model")
-  const usrCarYear = document.getElementById("usr_car_year")
-  const usrCarbon = document.getElementById("usr_co2")
-
-  usrCarMake.innerHTML = data.data.attributes.vehicle_make
-  usrCarModel.innerHTML = data.data.attributes.vehicle_model
-  usrCarYear.innerHTML = data.data.attributes.vehicle_year
-  usrCarbon.innerHTML = data.data.attributes.carbon_lb
-
-  // show the box
-  usrCarBox.style.display = "block"
 }
 
 function showCarBox(data, boxID, makeID, modelID, yearID, carbonID) {
@@ -360,6 +346,7 @@ function showCarBox(data, boxID, makeID, modelID, yearID, carbonID) {
   carBox.style.display = "block"
 }
 
+// this disables a div in the html file
 function disableDiv(divName) {
   const div = document.getElementById(divName)
   div.style.display = "none"
