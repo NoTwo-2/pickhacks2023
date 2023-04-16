@@ -8,7 +8,50 @@
     font-family: 'Space Grotesk', sans-serif;
     color: darkgreen;
   }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  .nav_bar {
+    background-color: black;
+  }
   
+  img {
+    height: 40px;
+    margin-right: 20px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-left: 20px;
+  }
+  
+  nav li:first-child {
+    margin-left: 0;
+  }
+  
+  nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: black;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+  }
+  
+
   .map {
     width: 80%;
     margin: 0 auto;
