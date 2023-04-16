@@ -83,8 +83,11 @@ function calculateDistance() {
       var distance = response.rows[0].elements[0].distance.value * 0.000621371192;
       globalDistance = distance
       console.log(distance);
-      var consoleDiv = document.getElementById("distance");
-      consoleDiv.innerHTML = distance.toFixed(2);
+      distanceText = `${distance.toFixed(2)} miles`
+      var top = document.getElementById("distance");
+      var bottom = document.getElementById("distance_l");
+      top.innerHTML = `${distance.toFixed(2)} miles`;
+      bottom.innerHTML = `${distance.toFixed(2)} miles`;
       // Create orgin and Destination markers for search term
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'address': origin }, function(results, status) {
