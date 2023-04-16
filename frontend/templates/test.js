@@ -283,10 +283,10 @@ function activateYears(yearToIDMap) {
     if (yearToIDMap.has(searchTerm)) {
       console.log(searchTerm)
       // run the carbon estimate for the vehicle id
-        runCarbonEstimate(yearToIDMap.get(searchTerm))
+      runCarbonEstimate(yearToIDMap.get(searchTerm))
     }
     else {
-
+      hideCarInfo()
     }
   });
 }
@@ -295,11 +295,36 @@ function activateYears(yearToIDMap) {
 function runCarbonEstimate(vehicleID) {
   carbonRequest('estimates', vehicleID, globalDistance)
     .then(data => {
-      console.log(data)
+      showCarInfo(data)
     })
     .catch(error => {
       console.error('Estimate request failed', error)
     })
+}
+
+// takes a json block of data and populates the html with the elements
+function showCarInfo(data) {
+  console.log(data)
+  // define html elements
+  const usrCarBox = document.getElementById("usr_box")
+  const usrCarMake = document.getElementById("usr_car_make")
+  const usrCarModel = document.getElementById("usr_car_model")
+  const usrCarYear = document.getElementById("usr_car_year")
+  const usrCarbon = document.getElementById("usr_co2")
+
+  usrCarMake.innerHTML = data.data.attributes.vehicle_make
+  usrCarModel.innerHTML = data.data.attributes.vehicle_model
+  usrCarYear.innerHTML = data.data.attributes.vehicle_year
+  usrCarbon.innerHTML = data.data.attributes.carbon_lb
+
+  // show the box
+  usrCarBox.style.display = "block"
+}
+
+
+function hideCarInfo() {
+  const usrCarBox = document.getElementById("usr_box")
+  usrCarBox.style.display = "none"
 }
 
 function disableDiv(divName) {
