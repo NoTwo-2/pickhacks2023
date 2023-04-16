@@ -7,11 +7,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Quicksand&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito+Sans&display=swap" rel="stylesheet">
     <title>Distance Calculator</title>
   </head>
   <body class="test_page" onload="initMap()">
     <header>
-      <img src="images/logo.png">
+      <div class="logo-container">
+          <img src="images/logo.png" class="project-logo">
+          <span class="logo-text">e-Mission</span>
+      </div>
       <div class="nav_bar">
       <nav>
           <ul>
@@ -74,10 +78,9 @@
     
     <script src="test.js"></script>
     <div class="location_search"><div id="distance_l"></div></div>
-    
 
-    <div class="container">
-      <div class="big_box" id="usr_box" style="display: none;">
+    <div class="box-container">
+      <div class="green_box" id="usr_box" style="display: none;">
         <div class="title">Your Car</div>
         <div><span class="bold">Make: </span><span class="data" id="usr_car_make"></span></div>
         <div><span class="bold">Model: </span><span class="data" id="usr_car_model"></span></div>
@@ -85,15 +88,15 @@
         <div><span class="bold">Pounds of CO2 Produced: </span></div>
         <div><span class="co2_display" id="usr_co2"></span></div>
       </div>
-      <div class="box" id="box2">
+      <div class="green-box" id="box2">
         <div class="title">Car Name 2</div>
         <div><span class="bold">CO2: </span><span class="data" id="box2_co2"></span></div>
       </div>
-      <div class="box" id="box3">
+      <div class="green-box" id="box3">
         <div class="title">Car Name 3</div>
         <div><span class="bold">CO2: </span><span class="data" id="box3_co2"></span></div>
       </div>
-      <div class="box" id="box4">
+      <div class="green-box" id="box4">
         <div class="title">Car Name 4</div>
         <div><span class="bold">CO2: </span><span class="data" id="box4_co2"></span></div>
       </div>
