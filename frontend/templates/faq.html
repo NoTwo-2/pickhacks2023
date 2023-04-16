@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Quicksand&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito+Sans&display=swap" rel="stylesheet">
 <head>
 	<title>Four Boxes</title>
 	<style>
+		.body {
+  		background-color: lightblue;
+		}
 		.container {
 			display: flex;
 			flex-wrap: wrap;
@@ -21,6 +30,8 @@
 			border-radius: 10px;
 			overflow: hidden;
 			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+			font-family: 'Poppins', sans-serif;
+			text-align: center;
 		}
 		
 		.box img {
@@ -31,44 +42,65 @@
 		}
 		
 		.box a {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 50%;
-			background-color: #000;
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			text-decoration: none;
-			font-size: 24px;
-			opacity: 0;
-			transition: opacity 0.3s ease-in-out;
-		}
-		
-		.box:hover a {
-			opacity: 0.8;
-		}
+ position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgb(72, 122, 66);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.box:hover a {
+  opacity: 0.8;
+}
+
 	</style>
 </head>
 <body>
+	<header>
+		<div class="logo-container">
+			<img src="images/logo.png" class="project-logo">
+			<span class="logo-text">e-Mission</span>
+		</div>
+		<div class="nav_bar">
+			<nav>
+				<ul>
+					<li><a class="active" href="faq.html">FAQ </a></li>
+					<li><a href="test.html">Plan your trip </a></li>
+					<li><a href="home.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="faq-header">
+		<h1>Learn about reducing your carbon emissions</h1>
+	</div>
+
 	<div class="container">
 		<div class="box">
 			<img src="images/link_50tips.jpg" alt="Image 1">
-			<a href="#">50 tips to reduce your carbon footprint</a>
+			<a href="https://www.globalgiving.org/learn/reduce-carbon-footprint?rf=fb_climate_campaign_2021&utm_term=reducing%20carbon%20footprints&utm_campaign=Specific+Initiatives/Projects+(CIM)&utm_source=adwords&utm_medium=ppc&hsa_acc=3655017278&hsa_cam=6497848268&hsa_grp=95232448984&hsa_ad=410238808988&hsa_src=g&hsa_tgt=kwd-361312420277&hsa_kw=reducing%20carbon%20footprints&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=Cj0KCQjwlumhBhClARIsABO6p-ynez3Fha4RjntXuoPFE0dlhF4amXnYGqL0r61dwALBmUX-ztzLF-8aAumFEALw_wcB">50 tips to reduce your carbon footprint</a>
 		</div>
 		<div class="box">
 			<img src="images/link_carlowestCO2.jpg" alt="Image 2">
-			<a href="#">Cars with lowest CO2 emission</a>
+			<a href="https://8billiontrees.com/carbon-offsets-credits/cars-with-lowest-co2-emissions/">Cars with lowest CO2 emission</a>
 		</div>
 		<div class="box">
 			<img src="images/link_changingcountry.jpg" alt="Image 3">
-			<a href="#">How emissions are changing in each country </a>
+			<a href="https://ourworldindata.org/co2-and-greenhouse-gas-emissions">How emissions are changing in each country </a>
 		</div>
 		<div class="box">
 			<img src="images/link_whatisfootprint.jpg" alt="Image 4">
-			<a href="#">What is a carbon footprint</a>
+			<a href="https://earth.org/what-does-carbon-footprint-mean/">What is a carbon footprint ?</a>
 		</div>
 	</div>
 </body>
