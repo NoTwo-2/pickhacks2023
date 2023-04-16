@@ -286,7 +286,7 @@ function activateYears(yearToIDMap) {
       runCarbonEstimate(yearToIDMap.get(searchTerm))
     }
     else {
-      hideCarInfo()
+      disableDiv("usr_box")
     }
   });
 }
@@ -319,12 +319,6 @@ function showCarInfo(data) {
 
   // show the box
   usrCarBox.style.display = "block"
-}
-
-
-function hideCarInfo() {
-  const usrCarBox = document.getElementById("usr_box")
-  usrCarBox.style.display = "none"
 }
 
 function disableDiv(divName) {
