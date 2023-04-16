@@ -1,4 +1,4 @@
-let map, originMarker, destMarker,originAutocomplete, destAutocomplete;;
+let map, dRenderer, originAutocomplete, destAutocomplete;;
 let globalDistance
 
 // TODO: SECRET HERE, DESTROY!!!
@@ -70,6 +70,9 @@ function calculateDistance() {
   var origin = document.getElementById('origin').value;
   var destination = document.getElementById('destination').value;
   var service = new google.maps.DistanceMatrixService();
+  var dService = new google.maps.DirectionsService();
+
+  // this will get the distance between the origin and destination
   service.getDistanceMatrix({
     origins: [origin],
     destinations: [destination],
@@ -79,7 +82,6 @@ function calculateDistance() {
     avoidTolls: false
   }, function(response, status) {
     if (status === 'OK') {
-      console.log(response)
       var distance = response.rows[0].elements[0].distance.value * 0.000621371192;
       globalDistance = distance
       console.log(distance);
@@ -88,40 +90,6 @@ function calculateDistance() {
       var bottom = document.getElementById("distance_l");
       top.innerHTML = `${distance.toFixed(2)} miles`;
       bottom.innerHTML = `${distance.toFixed(2)} miles`;
-      // Create orgin and Destination markers for search term
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ 'address': origin }, function(results, status) {
-        if (status === 'OK') {
-          if (originMarker) {
-            originMarker.setMap(null)
-            originMarker = null
-          }
-          originMarker = new google.maps.Marker({
-            position: results[0].geometry.location,
-            title: origin
-          });
-          originMarker.setMap(map)
-          console.log("set origin")
-        } else {
-          alert('Error: ' + status);
-        }
-      });
-
-      geocoder.geocode({ 'address': destination }, function(results, status) {
-        if (status === 'OK') {
-          if (destMarker) {
-            destMarker.setMap(null)
-            destMarker = null
-          }
-          destMarker = new google.maps.Marker({
-            position: results[0].geometry.location,
-            title: destination
-          });
-          destMarker.setMap(map)
-        } else {
-          alert('Error: ' + status);
-        }
-      });
 
       // activate the transportation divs
       enableMakeDiv()
@@ -129,6 +97,27 @@ function calculateDistance() {
     } else {
       alert('Error: ' + status);
     }
+
+  // this
+  dService.route({
+    origin: origin,
+    destination: destination,
+    travelMode: 'DRIVING'
+  }, function(result, status) {
+    if (status == 'OK') {
+      console.log(dRenderer)
+      if (dRenderer) {
+        dRenderer.setMap(null)
+        dRenderer = null
+        console.log(dRenderer)
+      }
+      dRenderer = new google.maps.DirectionsRenderer();
+      dRenderer.setMap(map)
+      dRenderer.setDirections(result);
+    } else {
+      alert('Error: ' + status);
+    }
+  })
   });
 }
 
