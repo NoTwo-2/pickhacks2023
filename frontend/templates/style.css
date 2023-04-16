@@ -112,7 +112,12 @@
     text-decoration: none;
     background-color: black;
   }
-  
+  .bold{
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .data{
+    font-family: 'Poppins', sans-serif;
+  }
   .active {
     background-color: darkgreen;
   }
@@ -121,44 +126,48 @@
   .box-container {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     margin: 50px auto;
     max-width: 1200px;
-  }
-
-  .big_box {
-    width: 200px;
-    height: 300px;
-    background-color: #57b6ff;
-    border-radius: 10px;
-    border-width: 4px;
-    border-color: darkblue;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-  .co2_display {
-    font-weight: bold;
-    font-size: x-large;
-  }
+ }
+ .title{
+    font-family: 'Space Grotesk', sans-serif;
+ }
+ .co2_display{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15pt;
+ }
 
   .green-box {
     width: 200px;
-    height: 200px;
-    background-color: #c4ffc4;
+    height: 250px;
+    background-color: darkgreen;
     border-radius: 10px;
     border-width: 4px;
     border-color: darkgreen;
     padding: 10px;
     box-sizing: border-box;
     text-align: center;
-  }
+    color: white;
+ }
+ .fun-box {
+    width: 200px;
+    height: 250px;
+    background-color: lightblue;
+    border-radius: 10px;
+    border-width: 4px;
+    border-color: darkgreen;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+ }
+
 
   .title {
     font-weight: bold;
     margin-bottom: 10px;
-  }  
+ }
 
   .map {
     width: 80%;
@@ -228,4 +237,4 @@
     font-family: 'Quicksand', sans-serif;
     font-family: 'Space Grotesk', sans-serif;
     color: #6A5D3E;
-  }
+}
