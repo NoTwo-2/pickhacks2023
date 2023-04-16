@@ -1,6 +1,9 @@
 .test_page {
     background-color: antiquewhite;
   }
+.homepage{
+    background-color: #dec8ab;
+}
   
   .map_head {
     text-align: center;
@@ -17,9 +20,22 @@
   .nav_bar {
     background-color: black;
   }
+  .logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40pt;
+    color: darkgreen;
+  }
 
-  img {
-    height: 40px;
+  .map-logo {
+    height: 80px;
+    width: 100px;
+    margin-right: 20px;
+  }
+  
+
+  .project-logo {
+    height: 80px;
+    width: 100px;
     margin-right: 20px;
   }
   
