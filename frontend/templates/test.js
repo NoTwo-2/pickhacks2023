@@ -170,8 +170,8 @@ function enableMakeDiv() {
           disableDiv("generate")
           disableDiv("usr_box")
           disableDiv("bad_box")
-          disableDiv("okayBox")
-          disableDiv("goodBox")
+          disableDiv("okay_box")
+          disableDiv("good_box")
           disableDiv("facts")
         }
       })
@@ -245,8 +245,8 @@ function enableModelDiv(makeID) {
           disableDiv("generate")
           disableDiv("usr_box")
           disableDiv("bad_box")
-          disableDiv("okayBox")
-          disableDiv("goodBox")
+          disableDiv("okay_box")
+          disableDiv("good_box")
           disableDiv("facts")
         }
       });
@@ -297,8 +297,8 @@ function activateYears(yearToIDMap) {
       disableDiv("generate")
       disableDiv("usr_box")
       disableDiv("bad_box")
-      disableDiv("okayBox")
-      disableDiv("goodBox")
+      disableDiv("okay_box")
+      disableDiv("good_box")
       disableDiv("facts")
     }
   });
@@ -312,12 +312,18 @@ function runCarbonEstimate(vehicleID) {
   const goodID = "fbb36834-899e-4d90-b1f1-b067918e6ed7";
 
   const factContainer = document.getElementById("facts")
-  let poundsOfCarbon;
 
   carbonRequest('estimates', vehicleID, globalDistance)
     .then(data => {
       showCarBox(data, "usr_box", "usr_car_make", "usr_car_model", "usr_car_year", "usr_co2")
       carbonMT = data.data.attributes.carbon_mt
+      // shows a few fun facts
+      showFacts(carbonMT, "lbs_of_coal", 1119.820828667413)
+      showFacts(carbonMT, "phones_charged", 121654.501216545)
+      showFacts(carbonMT, "acres_of_forest", 4.333333333333333)
+      showFacts(carbonMT, "bags_recycled", 43.29004329004329)
+
+      factContainer.style.display = "flex"
     })
     .catch(error => {
       console.error('Estimate request failed', error)
@@ -342,21 +348,12 @@ function runCarbonEstimate(vehicleID) {
   carbonRequest('estimates', goodID, globalDistance)
     .then(data => {
       showCarBox(data, "good_box", "good_make", "good_model", "good_year", "good_co2")
+      // automatically scroll down when done generating
+      document.getElementById("distance_l").scrollIntoView(true)
     })
     .catch(error => {
       console.error('Estimate request failed', error)
     })
-
-  // shows a few fun facts
-  showFacts(carbonMT, "lbs_of_coal", 1119.820828667413)
-  showFacts(carbonMT, "phones_charged", 121654.501216545)
-  showFacts(carbonMT, "acres_of_forest", 4.333333333333333)
-  showFacts(carbonMT, "bags_recycled", 43.29004329004329)
-
-  factContainer.style.display = "block"
-
-  // automatically scroll down when done generating
-  document.getElementById("distance_l").scrollIntoView(true)
 }
 
 function showCarBox(data, boxID, makeID, modelID, yearID, carbonID) {
@@ -384,7 +381,13 @@ function disableDiv(divName) {
 function showFacts(carbon, factID, multiplier) {
   const factVal = document.getElementById(factID)
 
-  factVal.innerHTML = (carbon * multiplier).toFixed(1)
+  // black magic
+  let float = (carbon * multiplier)
+  let int = float.toFixed(0)
+  let len = int.length
+  if (len > 3) { len = 3 }
+  else if (int == 0) { len = 0 }
+  factVal.innerHTML = float.toFixed(3 - len)
 }
 
 initMap();
