@@ -281,12 +281,16 @@ function activateYears(yearToIDMap) {
     const searchTerm = parseInt(yearSearch.value);
     // check if what the user inputted is a valid item
     if (yearToIDMap.has(searchTerm)) {
-      console.log(searchTerm)
+      console.log(searchTerm);
       // run the carbon estimate for the vehicle id
-      runCarbonEstimate(yearToIDMap.get(searchTerm))
+      const generateButton = document.getElementById("gen_button");
+      document.getElementById("generate").style.display = "block";
+      generateButton.onclick = function() { 
+        runCarbonEstimate(yearToIDMap.get(searchTerm));
+      };
     }
     else {
-      disableDiv("usr_box")
+      disableDiv("generate")
     }
   });
 }
@@ -328,6 +332,8 @@ function runCarbonEstimate(vehicleID) {
     .catch(error => {
       console.error('Estimate request failed', error)
     })
+
+  document.getElementById("distance_l").scrollIntoView(true)
 }
 
 // takes a json block of data and populates the html with the elements
