@@ -89,11 +89,16 @@ function calculateDistance() {
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'address': origin }, function(results, status) {
         if (status === 'OK') {
+          if (originMarker) {
+            originMarker.setMap(null)
+            originMarker = null
+          }
           originMarker = new google.maps.Marker({
-            map: map,
             position: results[0].geometry.location,
             title: origin
           });
+          originMarker.setMap(map)
+          console.log("set origin")
         } else {
           alert('Error: ' + status);
         }
@@ -101,11 +106,15 @@ function calculateDistance() {
 
       geocoder.geocode({ 'address': destination }, function(results, status) {
         if (status === 'OK') {
+          if (destMarker) {
+            destMarker.setMap(null)
+            destMarker = null
+          }
           destMarker = new google.maps.Marker({
-            map: map,
             position: results[0].geometry.location,
             title: destination
           });
+          destMarker.setMap(map)
         } else {
           alert('Error: ' + status);
         }
@@ -274,7 +283,7 @@ function activateYears(yearToIDMap) {
         runCarbonEstimate(yearToIDMap.get(searchTerm))
     }
     else {
-      
+
     }
   });
 }
